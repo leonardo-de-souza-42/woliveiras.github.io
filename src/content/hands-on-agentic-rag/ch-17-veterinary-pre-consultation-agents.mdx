@@ -55,7 +55,7 @@ Every section is framed as evidence and questions. "Suggested questions" are pro
 The briefing renders as Markdown, which slots into the tools a clinic already uses: paste it into a record, attach it to a calendar event, or print it. VetSupport can write it straight to a file:
 
 ```sh
-uv run python -m vetsupport pre-consultation --pet-id <id> --output luna-briefing.md "vaccination history review"
+uv run python -m vetsupport pre-consultation --pet-id <id> --embedder fake --llm fake --output luna-briefing.md "vaccination history review"
 ```
 
 A briefing that is easy to read and easy to move is a briefing that gets used. The format is part of the product.

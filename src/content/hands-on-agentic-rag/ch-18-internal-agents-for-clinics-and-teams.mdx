@@ -26,7 +26,7 @@ flowchart TD
 
 The critical design rule from the security resource is that the model must not decide permissions. Access control is enforced in the retrieval layer, in code, before any evidence reaches the model. The agent cannot grant itself access by being persuaded to, because the filter runs below it.
 
-VetSupport already filters retrieval by pet, which is the foundation. Role-based access extends the same idea: the retrieval query carries the requester's role and scope, and excludes anything outside it before ranking. A document the role may not see is never retrieved, never ranked, and never placed in context. It does not exist as far as that request is concerned.
+VetSupport already filters retrieval by pet, which is the foundation this chapter builds on. The role-based access described here is a design extension, not yet implemented in the harness. It works the same way: the retrieval query would carry the requester's role and scope, and exclude anything outside it before ranking. A document the role may not see is never retrieved, never ranked, and never placed in context. It does not exist as far as that request is concerned.
 
 ## Roles map to scopes
 
@@ -42,7 +42,7 @@ These are example decisions, not universal rules. The point is that the scope is
 
 ## The audit trail
 
-An internal tool that touches private records needs to record who accessed what. The structured logging you built for observability is the foundation of the audit trail: each request logs the requester, the role, the pet, and the scope of what was retrieved, recording IDs and counts rather than raw content. An audit trail answers "who saw this record, and when?" which is a question a clinic will eventually need to answer, whether for trust, governance, or a regulator.
+An internal tool that touches private records needs to record who accessed what. The structured logging you built for observability is the foundation an audit trail would extend: each request would log the requester, the role, the pet, and the scope of what was retrieved, recording IDs and counts rather than raw content. An audit trail answers "who saw this record, and when?" which is a question a clinic will eventually need to answer, whether for trust, governance, or a regulator.
 
 ## The agent still does not decide clinically
 
@@ -50,7 +50,7 @@ Adding roles does not change the safety boundary. An internal agent surfaces pen
 
 ## Checklist
 
-- Retrieval filters by role and scope, not only by pet.
+- Retrieval should filter by role and scope, not only by pet (the harness filters by pet today).
 - Access control is enforced in code, never decided by the model.
 - Roles map to explicit scopes of types, sources, and actions.
 - Every access is recorded in an audit trail of IDs and decisions.

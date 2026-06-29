@@ -44,7 +44,7 @@ The value of the education agent is only as good as its sources. Curating truste
 
 ## Extending VetSupport
 
-VetSupport's main path focuses on a pet's records, but the education agent fits the same architecture. It is another retriever (over curated sources) behind another intent (general education) in the router from Module 4. The safety layer already routes general-education questions away from personal advice. Building it is a matter of adding a curated source store and an education intent, not redesigning the agent. That is the payoff of the routing architecture: new knowledge needs is a new source and a new route, not a new system.
+VetSupport's main path focuses on a pet's records, but the education agent fits the same architecture. It would be another retriever (over curated sources) behind a new education intent in the router from Module 4, with the safety layer extended to keep general-education questions away from personal advice. Neither the education intent nor the curated-source route exists in the harness yet; building them is a matter of adding a curated source store and an education intent, not redesigning the agent. That is the payoff of the routing architecture: a new knowledge need is a new source and a new route, not a new system.
 
 ## Checklist
 

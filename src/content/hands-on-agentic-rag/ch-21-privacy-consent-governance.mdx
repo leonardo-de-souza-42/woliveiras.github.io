@@ -13,7 +13,7 @@ The foundational privacy guarantee is that one pet's data never appears in anoth
 
 ```mermaid
 flowchart TD
-    Q[Query for a pet] --> F[Filter by owner in retrieval]
+    Q[Query for a pet] --> F[Filter by pet in retrieval]
     F --> R[Rank only permitted evidence]
     R --> A[Answer]
 ```
@@ -42,7 +42,7 @@ The properties in this chapter, isolation, code-enforced access, metadata-only t
 
 ## Checklist
 
-- Retrieval is filtered by owner and role, in code, before ranking.
+- Retrieval is filtered by pet, in code, before ranking; role-based filtering is the production extension from Chapter 18.
 - The model never decides access.
 - Telemetry captures metadata, never raw content.
 - Provenance is tracked to support consent and purpose limitation.

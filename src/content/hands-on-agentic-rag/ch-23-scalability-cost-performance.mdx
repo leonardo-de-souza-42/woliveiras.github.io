@@ -44,7 +44,7 @@ The largest controllable model cost is context size. Every extra chunk in the co
 
 ## Skip work the agent does not need
 
-The agentic structure is itself a performance lever. An emergency question should escalate without an expensive retrieval and generation pass. A general question may not need a per-pet document search at all. Because the agent decides whether to retrieve, it can avoid spending tokens on questions that do not need evidence. The cheapest retrieval is the one the router decides not to run.
+The agentic structure is itself a performance lever, even if VetSupport does not pull it yet. The current graph always retrieves, but because intent is classified before retrieval, the architecture makes this optimization natural to add later. An emergency question could escalate without an expensive retrieval and generation pass, and a general question might skip a per-pet document search entirely. The cheapest retrieval is the one a router decides not to run, and intent classification is what would let VetSupport make that decision.
 
 ## Caching and reuse
 
@@ -55,7 +55,7 @@ Repeated work is wasted money. Identical queries, stable embeddings, and unchang
 - Indexing is idempotent, so embedding cost is paid once.
 - Index type matches corpus size, with recall measured against evaluation.
 - Context stays small to control the dominant model cost.
-- The agent skips retrieval and generation when a question does not need them.
+- Intent classification makes it possible to skip retrieval and generation for questions that do not need them.
 - Deterministic artifacts like embeddings are stored and reused, not recomputed.
 
 ## Exercise
